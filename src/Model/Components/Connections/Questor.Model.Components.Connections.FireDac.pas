@@ -59,7 +59,7 @@ begin
   FConnection.LoginPrompt     := False;
   FConnection.Params.Database := '';
   FConnection.Params.UserName := '';
-  FConnection.Params.Password := '@CNE2021';
+  FConnection.Params.Password := '';
   FConnection.Connected       := True;
 
   FQuery            := TFDQuery.Create(nil);
