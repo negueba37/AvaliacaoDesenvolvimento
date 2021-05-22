@@ -1,0 +1,33 @@
+unit Questor.Model.Entities.Cliente;
+
+interface
+
+type
+  TModelEntitiesCliente = class
+    private
+    FCodigo:Integer;
+    FCPF:string;
+    public
+    constructor Create();
+    destructor Destroy;override;
+    function Codigo:Integer;
+    function Codigo(aValue:Integer) : TModelEntitiesCliente;
+
+  end;
+
+implementation
+
+{ TModelEntitiesCliente }
+
+constructor TModelEntitiesCliente.Create;
+begin
+
+end;
+
+destructor TModelEntitiesCliente.Destroy;
+begin
+
+  inherited;
+end;
+
+end.

@@ -1,0 +1,79 @@
+unit Questor.Model.Services.Sorteio;
+
+interface
+
+uses Questor.Model.DAO.Interfaces;
+  type
+    TModelServicesSorteio = class
+      private
+      [weak]
+      FDAO : iModelDAOServices<TModelServicesSorteio>;
+      FCodigoCarro:Integer;
+      FCodigoCliente:Integer;
+      FCodigoVenda:Integer;
+      public
+      constructor Create(aParent : iModelDAOServices<TModelServicesSorteio>);
+      destructor Destroy;override;
+      function CodigoVenda:integer;overload;
+      function CodigoVenda(aValue:Integer) : TModelServicesSorteio;overload;
+      function CodigoCarro:Integer;overload;
+      function CodigoCarro(aValue:Integer) : TModelServicesSorteio;overload;
+      function CodigoCliente:Integer;overload;
+      function CodigoCliente(aValue:Integer) : TModelServicesSorteio;overload;
+      function &End : iModelDAOServices<TModelServicesSorteio>;
+    end;
+implementation
+
+{ TModelServicesSorteio }
+
+function TModelServicesSorteio.CodigoCarro: Integer;
+begin
+
+end;
+
+function TModelServicesSorteio.&End: iModelDAOServices<TModelServicesSorteio>;
+begin
+  Result := FDAO;
+end;
+
+function TModelServicesSorteio.CodigoCarro(
+  aValue: Integer): TModelServicesSorteio;
+begin
+
+end;
+
+function TModelServicesSorteio.CodigoCliente(
+  aValue: Integer): TModelServicesSorteio;
+begin
+
+end;
+
+function TModelServicesSorteio.CodigoCliente: Integer;
+begin
+
+end;
+
+function TModelServicesSorteio.CodigoVenda: integer;
+begin
+  Result := FCodigoVenda;
+end;
+
+function TModelServicesSorteio.CodigoVenda(
+  aValue: Integer): TModelServicesSorteio;
+begin
+
+end;
+
+constructor TModelServicesSorteio.Create(
+  aParent: iModelDAOServices<TModelServicesSorteio>);
+begin
+  FDAO := aParent;
+end;
+
+destructor TModelServicesSorteio.Destroy;
+begin
+
+  inherited;
+end;
+
+end.

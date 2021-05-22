@@ -1,0 +1,15 @@
+unit Questor.Model.Services.Ganhadores;
+
+interface
+
+uses Questor.Model.DAO.Interfaces;
+type
+  TModelServicesGanhadores = class (TInterfacedObject,iModelDAOServices)
+  public
+    function DataSource: iModelDAOServices;
+    function This: iModelDAOServices;
+    function Get: iModelDAOServices;
+  end;
+implementation
+
+end.

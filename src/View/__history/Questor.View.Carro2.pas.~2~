@@ -1,0 +1,104 @@
+unit Questor.View.Carro2;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.StdCtrls, Vcl.Grids,
+  Vcl.DBGrids, Questor.Model.DAO.Carro, Questor.Model.DAO.Interfaces,
+  Questor.Model.Entities.Carro, Vcl.ComCtrls, Vcl.ExtCtrls,
+  Questor.Model.Components.Helper.Edit;
+
+type
+  TFQuestorViewCarro = class(TForm)
+    dbgCarro: TDBGrid;
+    dsCarro: TDataSource;
+    pnAcoes: TPanel;
+    pnFields: TPanel;
+    edModelo: TEdit;
+    edCodigo: TEdit;
+    btListar: TButton;
+    edDtLancamento: TDateTimePicker;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    btDeletar: TButton;
+    btEditar: TButton;
+    btIncluir: TButton;
+    procedure FormCreate(Sender: TObject);
+    procedure btListarClick(Sender: TObject);
+    procedure btDeletarClick(Sender: TObject);
+    procedure btEditarClick(Sender: TObject);
+    procedure btIncluirClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure dbgCarroDblClick(Sender: TObject);
+  private
+    FController:iModelDAOInterfaces<TModelEntitiesCarro>;
+  public
+    { Public declarations }
+  end;
+
+var
+  FQuestorViewCarro: TFQuestorViewCarro;
+
+implementation
+
+{$R *.dfm}
+
+procedure TFQuestorViewCarro.btDeletarClick(Sender: TObject);
+begin
+  FController.This
+  .Codigo(dsCarro.DataSet.FieldByName('CODIGO').AsInteger)
+  .&End
+  .Delete.Get;
+end;
+
+procedure TFQuestorViewCarro.btEditarClick(Sender: TObject);
+begin
+  FController
+   .This
+     .Codigo(edCodigo.ToInteger)
+     .Modelo(edModelo.Text)
+     .DataLancamento(edDtLancamento.Date)
+   .&End
+   .Update.Get;
+end;
+
+procedure TFQuestorViewCarro.btIncluirClick(Sender: TObject);
+begin
+  FController
+   .This
+     .Codigo(edCodigo.ToInteger)
+     .Modelo(edModelo.Text)
+     .DataLancamento(edDtLancamento.Date)
+   .&End
+   .Insert.Get;
+end;
+
+procedure TFQuestorViewCarro.btListarClick(Sender: TObject);
+begin
+  FController.Get;
+end;
+
+procedure TFQuestorViewCarro.dbgCarroDblClick(Sender: TObject);
+begin
+  if dsCarro.DataSet.RecordCount > 0 then
+  begin
+    edCodigo.Text       := dsCarro.DataSet.FieldByName('CODIGO').AsString;
+    edModelo.Text       := dsCarro.DataSet.FieldByName('MODELO').AsString;
+    edDtLancamento.Date := dsCarro.DataSet.FieldByName('DATALANCAMENTO').AsDateTime;
+  end;
+end;
+
+procedure TFQuestorViewCarro.FormCreate(Sender: TObject);
+begin
+  FController := TModelDAOCarro.New;
+  FController.DataSource(dsCarro).Get;
+end;
+
+procedure TFQuestorViewCarro.FormShow(Sender: TObject);
+begin
+  edCodigo.SetFocus;
+end;
+
+end.

@@ -1,0 +1,14 @@
+unit Questor.Model.Components.Helper.Edit;
+
+interface
+uses
+  vcl.stdCtrls;
+  type
+    TModelComponentsHelperEdit = class helper for TEdit
+
+    end;
+
+
+implementation
+
+end.

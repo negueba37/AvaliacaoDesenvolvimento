@@ -1,0 +1,7 @@
+unit Questor.Model.DAO.VendasCarroUno;
+
+interface
+
+implementation
+
+end.

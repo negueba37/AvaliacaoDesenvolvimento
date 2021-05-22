@@ -1,0 +1,35 @@
+unit Questor.View.Venda;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Questor.View.Base, Data.DB,
+  Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.Grids, Vcl.DBGrids,
+  Questor.Model.DAO.Interfaces, Questor.Model.Entities.Venda,
+  Questor.Model.DAO.Venda;
+
+type
+  TFQuestorViewVenda = class(TFQuestorViewBase)
+    procedure FormCreate(Sender: TObject);
+  private
+    FController : iModelDAOInterfaces<TModelEntitiesVenda>;
+  public
+    { Public declarations }
+  end;
+
+var
+  FQuestorViewVenda: TFQuestorViewVenda;
+
+implementation
+
+{$R *.dfm}
+
+procedure TFQuestorViewVenda.FormCreate(Sender: TObject);
+begin
+  inherited;
+  FController := TModelDAOVenda.New;
+  FController.DataSource(dsCadastro).Get;
+end;
+
+end.

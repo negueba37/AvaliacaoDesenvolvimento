@@ -1,0 +1,21 @@
+unit Questor.Model.Components.Helper.Edit;
+
+interface
+uses
+  vcl.stdCtrls;
+  type
+    TModelComponentsHelperEdit = class helper for TEdit
+    function ToInteger:Integer;
+    end;
+
+
+implementation
+
+{ TModelComponentsHelperEdit }
+
+function TModelComponentsHelperEdit.ToInteger: Integer;
+begin
+
+end;
+
+end.

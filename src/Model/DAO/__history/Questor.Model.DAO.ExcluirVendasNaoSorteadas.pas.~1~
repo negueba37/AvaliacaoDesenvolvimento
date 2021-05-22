@@ -1,0 +1,7 @@
+unit Questor.Model.DAO.ExcluirVendasNaoSorteadas;
+
+interface
+
+implementation
+
+end.

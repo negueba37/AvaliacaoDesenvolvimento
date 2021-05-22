@@ -1,0 +1,67 @@
+unit Questor.Model.Entities.Pessoa;
+
+interface
+
+uses Questor.Model.DAO.Interfaces;
+
+type
+  TModelEntitiesPessoa = class
+    private
+    [weak]
+    FDAO : iModelDAOInterfaces<TModelEntitiesPessoa>;
+    FCodigo:Integer;
+    FCPF:string;
+    public
+    constructor Create( aParent:iModelDAOInterfaces<TModelEntitiesPessoa>);
+    destructor Destroy;override;
+    function Codigo:Integer;overload;
+    function Codigo(aValue:Integer) : TModelEntitiesPessoa;overload;
+    function CPF:string;overload;
+    function CPF(aValue:string) : TModelEntitiesPessoa;overload;
+    function &End : iModelDAOInterfaces<TModelEntitiesPessoa>;
+
+  end;
+
+implementation
+
+{ TModelEntitiesCliente }
+
+function TModelEntitiesPessoa.Codigo: Integer;
+begin
+  Result := FCodigo;
+end;
+
+function TModelEntitiesPessoa.&End: iModelDAOInterfaces<TModelEntitiesPessoa>;
+begin
+  Result := FDAO;
+end;
+
+function TModelEntitiesPessoa.Codigo(aValue: Integer): TModelEntitiesPessoa;
+begin
+  Result := Self;
+  FCodigo := aValue;
+end;
+
+function TModelEntitiesPessoa.CPF: string;
+begin
+  Result := FCPF;
+end;
+
+function TModelEntitiesPessoa.CPF(aValue: string): TModelEntitiesPessoa;
+begin
+  Result := Self;
+  FCPF := aValue;
+end;
+
+constructor TModelEntitiesPessoa.Create( aParent:iModelDAOInterfaces<TModelEntitiesPessoa>);
+begin
+  FDAO := aParent;
+end;
+
+destructor TModelEntitiesPessoa.Destroy;
+begin
+
+  inherited;
+end;
+
+end.

@@ -1,0 +1,64 @@
+unit Questor.Model.DAO.VendasCarroMarea;
+
+interface
+
+uses Questor.Model.DAO.Interfaces,
+  Questor.Model.Services.Sorteio,
+  Questor.Model.Components.Connections.Interfaces,
+  Questor.Model.Components.Connections.FireDac, Data.DB;
+
+type
+  TModelServicesGanhadores = class(TInterfacedObject,iModelDAOServices)
+  private
+    FEntity:TModelServicesSorteio;
+    FConnection : iModelComponentsConnections;
+  public
+    constructor Create();
+    destructor Destroy; override;
+    class function New: iModelDAOServices;
+    function DataSource(aValue:TDataSource): iModelDAOServices;
+    function Get: iModelDAOServices;
+
+  end;
+
+implementation
+
+
+
+constructor TModelServicesGanhadores.Create;
+begin
+  FEntity := TModelServicesSorteio.Create();
+  FConnection := TModelComponentsConnectionsFireDac.New;
+end;
+
+function TModelServicesGanhadores.DataSource(aValue:TDataSource): iModelDAOServices;
+begin
+  Result := Self;
+  aValue.DataSet := FConnection.DataSet;
+end;
+
+destructor TModelServicesGanhadores.Destroy;
+begin
+  FEntity.Destroy;
+  inherited;
+end;
+
+function TModelServicesGanhadores.Get: iModelDAOServices;
+begin
+  Result := Self;
+  FConnection
+  .Close
+  .SQLClear
+  .SQLAdd('SELECT COUNT(*) QT_VENDAS FROM VENDA')
+  .SQLAdd('LEFT JOIN CARROS ON CARROS.CODIGO = VENDA.CODIGOCARRO')
+  .SQLAdd('WHERE UPPER(CARROS.MODELO) = ''MAREA''')
+  .Open
+end;
+
+class function TModelServicesGanhadores.New : iModelDAOServices;
+begin
+  Result := Self.Create;
+end;
+
+
+end.

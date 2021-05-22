@@ -1,0 +1,97 @@
+unit Questor.Model.DAO.Cliente;
+
+interface
+
+uses Questor.Model.DAO.Interfaces, Questor.Model.Entities.Pessoa, Data.DB,
+  Questor.Model.Components.Connections.Interfaces,
+  Questor.Model.Components.Connections.FireDac;
+
+  type TModelDAOCliente = class(TInterfacedObject,iModelDAOInterfaces<TModelEntitiesPessoa>)
+    private
+    FEntity : TModelEntitiesPessoa;
+    FConnection : iModelComponentsConnections;
+    public
+    constructor Create();
+    destructor Destroy;override;
+    class function New : iModelDAOInterfaces<TModelEntitiesPessoa>;
+    function DataSource(AValue:TDataSource):iModelDAOInterfaces<TModelEntitiesPessoa>;
+    function Delete : iModelDAOInterfaces<TModelEntitiesPessoa>;
+    function Get : iModelDAOInterfaces<TModelEntitiesPessoa>;
+    function Insert : iModelDAOInterfaces<TModelEntitiesPessoa>;
+    function Update : iModelDAOInterfaces<TModelEntitiesPessoa>;
+    function This : TModelEntitiesPessoa;
+
+  end;
+
+implementation
+
+{ TModelDAOPessoa }
+
+constructor TModelDAOCliente.Create;
+begin
+  FEntity := TModelEntitiesPessoa.Create(Self);
+  FConnection := TModelComponentsConnectionsFireDac.New;
+end;
+
+function TModelDAOCliente.DataSource(
+  AValue: TDataSource): iModelDAOInterfaces<TModelEntitiesPessoa>;
+begin
+  Result := Self;
+  AValue.DataSet := FConnection.DataSet;
+end;
+
+function TModelDAOCliente.Delete: iModelDAOInterfaces<TModelEntitiesPessoa>;
+begin
+  Result := Self;
+end;
+
+destructor TModelDAOCliente.Destroy;
+begin
+  FEntity.DisposeOf;
+  inherited;
+end;
+
+function TModelDAOCliente.Get: iModelDAOInterfaces<TModelEntitiesPessoa>;
+begin
+  Result := Self;
+  FConnection.Close
+  .SQLClear
+  .SQLAdd('SELECT * FROM CLIENTE')
+  .Open;
+end;
+
+function TModelDAOCliente.Insert: iModelDAOInterfaces<TModelEntitiesPessoa>;
+begin
+  Result := Self;
+  FConnection.Close
+  .SQLClear
+  .SQLAdd('INSERT INTO CLIENTE (CODIGO,CPF)')
+  .SQLAdd('VALUES (:CODIGO,:CPF)')
+  .ParamByName('CODIGO',FEntity.Codigo)
+  .ParamByName('CPF',FEntity.CPF)
+  .ExecSQL;
+end;
+
+class function TModelDAOCliente.New: iModelDAOInterfaces<TModelEntitiesPessoa>;
+begin
+  Result := Self.Create;
+end;
+
+function TModelDAOCliente.This: TModelEntitiesPessoa;
+begin
+  Result := FEntity;
+end;
+
+function TModelDAOCliente.Update: iModelDAOInterfaces<TModelEntitiesPessoa>;
+begin
+  Result := Self;
+  FConnection.Close
+  .SQLClear
+  .SQLAdd('UPDATE CLIENTE SET CPF = :CPF')
+  .SQLAdd('WHERE CODIGO = :CODIGO')
+  .ParamByName('CODIGO',FEntity.Codigo)
+  .ParamByName('CPF',FEntity.CPF)
+  .ExecSQL;
+end;
+
+end.

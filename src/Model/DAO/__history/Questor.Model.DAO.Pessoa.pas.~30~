@@ -1,0 +1,80 @@
+unit Questor.Model.DAO.Pessoa;
+
+interface
+
+uses Questor.Model.DAO.Interfaces, Questor.Model.Entities.Pessoa, Data.DB,
+  Questor.Model.Components.Connections.Interfaces,
+  Questor.Model.Components.Connections.FireDac;
+
+  type TModelDAOPessoa = class(TInterfacedObject,iModelDAOInterfaces<TModelEntitiesPessoa>)
+    private
+    FEntity : TModelEntitiesPessoa;
+    FConnection : iModelComponentsConnections;
+    public
+    constructor Create();
+    destructor Destroy;override;
+    class function New : iModelDAOInterfaces<TModelEntitiesPessoa>;
+    function DataSource(AValue:TDataSource):iModelDAOInterfaces<TModelEntitiesPessoa>;
+    function Delete : iModelDAOInterfaces<TModelEntitiesPessoa>;
+    function Get : iModelDAOInterfaces<TModelEntitiesPessoa>;
+    function Insert : iModelDAOInterfaces<TModelEntitiesPessoa>;
+    function Update : iModelDAOInterfaces<TModelEntitiesPessoa>;
+    function This : TModelEntitiesPessoa;
+
+  end;
+
+implementation
+
+{ TModelDAOPessoa }
+
+constructor TModelDAOPessoa.Create;
+begin
+  FEntity := TModelEntitiesPessoa.Create(Self);
+  FConnection := TModelComponentsConnectionsFireDac.New;
+end;
+
+function TModelDAOPessoa.DataSource(
+  AValue: TDataSource): iModelDAOInterfaces<TModelEntitiesPessoa>;
+begin
+  Result := Self;
+  AValue.DataSet := FConnection.DataSet;
+end;
+
+function TModelDAOPessoa.Delete: iModelDAOInterfaces<TModelEntitiesPessoa>;
+begin
+  Result := Self;
+end;
+
+destructor TModelDAOPessoa.Destroy;
+begin
+  FEntity.Free;
+  inherited;
+end;
+
+function TModelDAOPessoa.Get: iModelDAOInterfaces<TModelEntitiesPessoa>;
+begin
+  Result := Self;
+
+end;
+
+function TModelDAOPessoa.Insert: iModelDAOInterfaces<TModelEntitiesPessoa>;
+begin
+  Result := Self;
+end;
+
+class function TModelDAOPessoa.New: iModelDAOInterfaces<TModelEntitiesPessoa>;
+begin
+  Result := Self.Create;
+end;
+
+function TModelDAOPessoa.This: TModelEntitiesPessoa;
+begin
+  Result := FEntity;
+end;
+
+function TModelDAOPessoa.Update: iModelDAOInterfaces<TModelEntitiesPessoa>;
+begin
+  Result := Self;
+end;
+
+end.

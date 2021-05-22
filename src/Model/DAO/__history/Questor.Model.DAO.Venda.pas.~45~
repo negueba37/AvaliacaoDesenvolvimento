@@ -1,0 +1,106 @@
+unit Questor.Model.DAO.Venda;
+
+interface
+
+uses Questor.Model.DAO.Interfaces, Data.DB,
+  Questor.Model.Components.Connections.FireDac,
+  Questor.Model.Components.Connections.Interfaces, Questor.Model.Entities.Venda;
+
+type
+  TModelDAOVenda = class(TInterfacedObject,iModelDAOInterfaces<TModelEntitiesVenda>)
+    private
+    FEntity:TModelEntitiesVenda;
+    FConnection : iModelComponentsConnections;
+    public
+    constructor Create(aParent : iModelDAOInterfaces<TModelEntitiesVenda>);
+    destructor Destroy; override;
+    class function New: iModelDAOInterfaces<TModelEntitiesVenda>;
+    function DataSource(AValue: TDataSource): iModelDAOInterfaces<TModelEntitiesVenda>;
+    function Delete: iModelDAOInterfaces<TModelEntitiesVenda>;
+    function Get: iModelDAOInterfaces<TModelEntitiesVenda>;
+    function Insert: iModelDAOInterfaces<TModelEntitiesVenda>;
+    function Update: iModelDAOInterfaces<TModelEntitiesVenda>;
+    function This: TModelEntitiesVenda;
+
+  end;
+
+implementation
+
+{ TModelDAOVenda }
+
+constructor TModelDAOVenda.Create(aParent : iModelDAOInterfaces<TModelEntitiesVenda>);
+begin
+  FConnection := TModelComponentsConnectionsFireDac.New;
+  FEntity := TModelEntitiesVenda.Create;
+end;
+
+function TModelDAOVenda.DataSource(AValue: TDataSource): iModelDAOInterfaces<TModelEntitiesVenda>;
+begin
+  Result := Self;
+  AValue.DataSet := FConnection.DataSet;
+end;
+
+function TModelDAOVenda.Delete: iModelDAOInterfaces<TModelEntitiesVenda>;
+begin
+  Result := Self;
+  FConnection.Close
+  .SQLClear
+  .SQLAdd('DELETE FROM VENDA')
+  .SQLAdd('WHERE CODIGO = :CODIGO')
+  .ParamByName('CODIGO',FEntity.Codigo)
+  .ExecSQL;
+end;
+
+destructor TModelDAOVenda.Destroy;
+begin
+  FEntity.Free;
+  inherited;
+end;
+
+function TModelDAOVenda.Get: iModelDAOInterfaces<TModelEntitiesVenda>;
+begin
+  Result := Self;
+  FConnection.Close
+  .SQLClear
+  .SQLAdd('SELECT * FROM VENDA')
+  .Open;
+end;
+
+function TModelDAOVenda.Insert: iModelDAOInterfaces<TModelEntitiesVenda>;
+begin
+  Result := Self;
+  FConnection.Close
+  .SQLClear
+  .SQLAdd('INSERT INTO VENDAS (CODIGO,CODIGOCLIENTE,CODIGOCARRO)')
+  .SQLAdd('VALUES (:CODIGO,:CODIGOCLIENTE,:CODIGOCARRO)')
+  .ParamByName('CODIGO',FEntity.Codigo)
+  .ParamByName('CODIGOCLIENTE',FEntity.CodigoCliente)
+  .ParamByName('CODIGOCARRO',FEntity.CodigoCarro)
+  .ExecSQL;
+end;
+
+class function TModelDAOVenda.New: iModelDAOInterfaces<TModelEntitiesVenda>;
+begin
+  Result := Self.Create(Self);
+end;
+
+function TModelDAOVenda.This: TModelEntitiesVenda;
+begin
+  Result := FEntity;
+end;
+
+function TModelDAOVenda.Update: iModelDAOInterfaces<TModelEntitiesVenda>;
+begin
+  Result := Self;
+  FConnection.Close
+  .SQLClear
+  .SQLAdd('INSERT INTO CARROS (CODIGO,CODIGOCLIENTE,CODIGOCARRO)')
+  .SQLAdd('VALUES (:CODIGO,:CODIGOCLIENTE,:CODIGOCARRO)')
+  .SQLAdd('WHERE CODIGO = :CODIGO')
+  .ParamByName('CODIGO',FEntity.Codigo)
+  .ParamByName('CODIGOCLIENTE',FEntity.CodigoCliente)
+  .ParamByName('CODIGOCARRO',FEntity.CodigoCarro)
+  .ExecSQL;
+end;
+
+end.

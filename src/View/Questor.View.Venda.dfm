@@ -1,0 +1,55 @@
+inherited FQuestorViewVenda: TFQuestorViewVenda
+  Caption = 'FQuestorViewVenda'
+  OnCreate = FormCreate
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited pnAcoes: TPanel
+    inherited btIncluir: TButton
+      OnClick = btIncluirClick
+    end
+  end
+  inherited pnFields: TPanel
+    object Label3: TLabel
+      Left = 8
+      Top = 24
+      Width = 33
+      Height = 13
+      Caption = 'C'#243'digo'
+    end
+    object Label2: TLabel
+      Left = 72
+      Top = 24
+      Width = 34
+      Height = 13
+      Caption = 'Pessoa'
+    end
+    object Label1: TLabel
+      Left = 216
+      Top = 24
+      Width = 27
+      Height = 13
+      Caption = 'Carro'
+    end
+    object edCodigo: TEdit
+      Left = 8
+      Top = 44
+      Width = 49
+      Height = 21
+      TabOrder = 0
+    end
+    object edPessoa: TEdit
+      Left = 72
+      Top = 44
+      Width = 95
+      Height = 21
+      TabOrder = 1
+    end
+    object edCarro: TEdit
+      Left = 216
+      Top = 44
+      Width = 353
+      Height = 21
+      TabOrder = 2
+    end
+  end
+end

@@ -1,0 +1,51 @@
+unit Questor.Model.Services.Ganhadores;
+
+interface
+
+uses Questor.Model.DAO.Interfaces;
+type
+  TModelServicesGanhadores = class (TInterfacedObject,iModelDAOServices)
+  public
+    constructor Create();
+    destructor Destroy;override;
+    class function New : iModelDAOServices;
+    function DataSource : iModelDAOServices;
+    function This: iModelDAOServices;
+    function Get: iModelDAOServices;
+  end;
+implementation
+
+{ TModelServicesGanhadores }
+
+constructor TModelServicesGanhadores.Create;
+begin
+
+end;
+
+function TModelServicesGanhadores.DataSource: iModelDAOServices;
+begin
+  Result := Self;
+end;
+
+destructor TModelServicesGanhadores.Destroy;
+begin
+
+  inherited;
+end;
+
+function TModelServicesGanhadores.Get: iModelDAOServices;
+begin
+
+end;
+
+class function TModelServicesGanhadores.New: iModelDAOServices;
+begin
+  Result := Self.Create;
+end;
+
+function TModelServicesGanhadores.This: iModelDAOServices;
+begin
+
+end;
+
+end.

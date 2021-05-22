@@ -1,0 +1,19 @@
+inherited FQuestorViewCarro: TFQuestorViewCarro
+  Caption = 'FQuestorViewCarro'
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited pnAcoes: TPanel
+    inherited btListar: TButton
+      OnClick = btListarClick
+    end
+    inherited btDeletar: TButton
+      OnClick = btDeletarClick
+    end
+    inherited btEditar: TButton
+      OnClick = btEditarClick
+    end
+    inherited btIncluir: TButton
+      OnClick = btIncluirClick
+    end
+  end
+end

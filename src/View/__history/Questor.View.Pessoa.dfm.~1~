@@ -1,0 +1,5 @@
+inherited FQuestorViewBase2: TFQuestorViewBase2
+  Caption = 'FQuestorViewBase2'
+  PixelsPerInch = 96
+  TextHeight = 13
+end
