@@ -21,7 +21,6 @@ type
     procedure btDeletarClick(Sender: TObject);
     procedure btEditarClick(Sender: TObject);
     procedure btListarClick(Sender: TObject);
-    procedure dbgCadastroDblClick(Sender: TObject);
   private
     FController:iModelDAOInterfaces<TModelEntitiesCliente>;
   public
@@ -62,26 +61,12 @@ begin
   .CPF(edCpf.Text)
   .&End
   .Insert.Get;
-
-   edCodigo.SetFocus;
-   edCodigo.Clear;
-   edCpf.Clear;
 end;
 
 procedure TFQuestorViewCliente.btListarClick(Sender: TObject);
 begin
   inherited;
   FController.Get;
-end;
-
-procedure TFQuestorViewCliente.dbgCadastroDblClick(Sender: TObject);
-begin
-  inherited;
-  if dsCadastro.DataSet.RecordCount > 0 then
-  begin
-    edCodigo.Text := dsCadastro.DataSet.FieldByName('CODIGO').AsString;
-    edCpf.Text := dsCadastro.DataSet.FieldByName('CPF').AsString;
-  end;
 end;
 
 procedure TFQuestorViewCliente.FormCreate(Sender: TObject);

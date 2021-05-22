@@ -80,7 +80,7 @@ begin
   if dsCadastro.DataSet.RecordCount > 0 then
   begin
     edCodigo.Text := dsCadastro.DataSet.FieldByName('CODIGO').AsString;
-    edCpf.Text := dsCadastro.DataSet.FieldByName('CPF').AsString;
+    edCpf.Text := dsCadastro.DataSet.FieldByName('CPF')
   end;
 end;
 

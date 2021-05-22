@@ -46,7 +46,7 @@ function TModelEntitiesVenda.Codigo(aValue: Integer): TModelEntitiesVenda;
 begin
   Result := Self;
   if (aValue <= 0) then
-    raise Exception.Create('Codigo da venda não informada !');
+    raise Exception.Create('Codigo da venda não informada !!');
   FCodigo := aValue;
 end;
 
@@ -58,8 +58,6 @@ end;
 function TModelEntitiesVenda.CodigoCarro(aValue: Integer): TModelEntitiesVenda;
 begin
   Result := Self;
-  if (aValue <= 0) then
-    raise Exception.Create('Codigo do carro não informada !');
   FCodigoCarro := aValue;
 end;
 
@@ -72,8 +70,6 @@ function TModelEntitiesVenda.CodigoCliente(
   aValue: Integer): TModelEntitiesVenda;
 begin
   Result := Self;
-  if (aValue <= 0) then
-    raise Exception.Create('Codigo do cliente não informado !');
   FCodigoCliente := aValue;
 end;
 

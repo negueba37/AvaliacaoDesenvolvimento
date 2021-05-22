@@ -40,7 +40,7 @@ function TModelEntitiesCliente.Codigo(aValue: Integer): TModelEntitiesCliente;
 begin
   Result := Self;
   if (aValue <= 0) then
-    raise Exception.Create('Código do cliente não informado !');
+    raise Exception.Create('Cdigo da venda não informada !');
   FCodigo := aValue;
 end;
 
@@ -52,12 +52,6 @@ end;
 function TModelEntitiesCliente.CPF(aValue: string): TModelEntitiesCliente;
 begin
   Result := Self;
-  if (Trim(aValue) = '') then
-    raise Exception.Create('CPF não informado !');
-
-  if (Length(aValue) > 11) then
-    raise Exception.Create('CPF deve conter apenas 11 digitos !');
-
   FCPF := aValue;
 end;
 

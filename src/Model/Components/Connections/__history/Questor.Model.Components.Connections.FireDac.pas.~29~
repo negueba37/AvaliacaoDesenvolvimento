@@ -58,7 +58,7 @@ begin
   FConnection.Params.DriverID := 'FB';
   FConnection.LoginPrompt     := False;
   FConnection.Params.Database := '';
-  FConnection.Params.UserName := 'SYSDBA';
+  FConnection.Params.UserName := '';
   FConnection.Params.Password := '';
   FConnection.Connected       := True;
 

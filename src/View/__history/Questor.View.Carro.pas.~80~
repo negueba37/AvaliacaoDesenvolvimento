@@ -22,7 +22,6 @@ type
     procedure btEditarClick(Sender: TObject);
     procedure btListarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
-    procedure FormShow(Sender: TObject);
   private
     FController:iModelDAOInterfaces<TModelEntitiesCarro>;
   public
@@ -84,12 +83,6 @@ begin
   inherited;
   FController := TModelDAOCarro.New;
   FController.DataSource(dsCadastro).Get;
-end;
-
-procedure TFQuestorViewCarro.FormShow(Sender: TObject);
-begin
-  inherited;
-  edDtLancamento.Date := Date;
 end;
 
 end.

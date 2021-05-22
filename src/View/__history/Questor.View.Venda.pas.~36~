@@ -24,7 +24,6 @@ type
     procedure dbgCadastroDblClick(Sender: TObject);
     procedure btDeletarClick(Sender: TObject);
     procedure btEditarClick(Sender: TObject);
-    procedure FormShow(Sender: TObject);
   private
     FController : iModelDAOInterfaces<TModelEntitiesVenda>;
   public
@@ -88,12 +87,6 @@ begin
   inherited;
   FController := TModelDAOVenda.New;
   FController.DataSource(dsCadastro).Get;
-end;
-
-procedure TFQuestorViewVenda.FormShow(Sender: TObject);
-begin
-  inherited;
-  edDtVenda.Date := Date;
 end;
 
 end.

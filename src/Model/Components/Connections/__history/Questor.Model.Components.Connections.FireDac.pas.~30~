@@ -57,9 +57,9 @@ begin
   FConnection.Connected       := False;
   FConnection.Params.DriverID := 'FB';
   FConnection.LoginPrompt     := False;
-  FConnection.Params.Database := '';
+  FConnection.Params.Database := 'C:\Projetos\AvaliacaoDesenvolvimento\Banco\SORTEIO_TAIF.FDB';
   FConnection.Params.UserName := 'SYSDBA';
-  FConnection.Params.Password := '';
+  FConnection.Params.Password := '@CNE2021';
   FConnection.Connected       := True;
 
   FQuery            := TFDQuery.Create(nil);

@@ -1,5 +1,5 @@
 inherited FQuestorViewCliente: TFQuestorViewCliente
-  Caption = 'Cadastro de Cliente'
+  Caption = 'FQuestorViewCliente'
   OnCreate = FormCreate
   OnShow = FormShow
   PixelsPerInch = 96

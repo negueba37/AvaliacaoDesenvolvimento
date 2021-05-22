@@ -52,12 +52,6 @@ end;
 function TModelEntitiesCliente.CPF(aValue: string): TModelEntitiesCliente;
 begin
   Result := Self;
-  if (Trim(aValue) = '') then
-    raise Exception.Create('CPF não informado !');
-
-  if (Length(aValue) > 11) then
-    raise Exception.Create('CPF deve conter apenas 11 digitos !');
-
   FCPF := aValue;
 end;
 

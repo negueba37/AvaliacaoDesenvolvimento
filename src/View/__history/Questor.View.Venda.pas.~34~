@@ -24,7 +24,6 @@ type
     procedure dbgCadastroDblClick(Sender: TObject);
     procedure btDeletarClick(Sender: TObject);
     procedure btEditarClick(Sender: TObject);
-    procedure FormShow(Sender: TObject);
   private
     FController : iModelDAOInterfaces<TModelEntitiesVenda>;
   public
@@ -54,7 +53,7 @@ begin
   .Codigo(edCodigo.ToInteger)
   .CodigoCliente(edPessoa.ToInteger)
   .CodigoCarro(edCarro.ToInteger)
-  .DataVenda(edDtVenda.Date)
+  .DataVenda(Date)
   .&End
   .Update.Get;
 
@@ -67,7 +66,7 @@ begin
   .Codigo(edCodigo.ToInteger)
   .CodigoCliente(edPessoa.ToInteger)
   .CodigoCarro(edCarro.ToInteger)
-  .DataVenda(edDtVenda.Date)
+  .DataVenda(Date)
   .&End
   .Insert.Get;
 end;
@@ -88,12 +87,6 @@ begin
   inherited;
   FController := TModelDAOVenda.New;
   FController.DataSource(dsCadastro).Get;
-end;
-
-procedure TFQuestorViewVenda.FormShow(Sender: TObject);
-begin
-  inherited;
-  edDtVenda.Date := Date;
 end;
 
 end.

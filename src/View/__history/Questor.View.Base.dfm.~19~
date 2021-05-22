@@ -39,60 +39,40 @@ object FQuestorViewBase: TFQuestorViewBase
     Align = alTop
     TabOrder = 1
     object btListar: TButton
-      AlignWithMargins = True
-      Left = 328
+      Left = 400
       Top = 1
-      Width = 104
+      Width = 133
       Height = 39
-      Margins.Left = 0
-      Margins.Top = 0
-      Margins.Right = 5
-      Margins.Bottom = 0
       Align = alLeft
       Caption = 'Listar [ F4 ]'
       TabOrder = 0
-      ExplicitLeft = 313
+      ExplicitLeft = 464
     end
     object btDeletar: TButton
-      AlignWithMargins = True
-      Left = 110
+      Left = 134
       Top = 1
-      Width = 104
+      Width = 133
       Height = 39
-      Margins.Left = 0
-      Margins.Top = 0
-      Margins.Right = 5
-      Margins.Bottom = 0
       Align = alLeft
       Caption = 'Deletar [ F2 ]'
       TabOrder = 1
-      ExplicitLeft = 105
+      ExplicitLeft = 89
     end
     object btEditar: TButton
-      AlignWithMargins = True
-      Left = 219
+      Left = 267
       Top = 1
-      Width = 104
+      Width = 133
       Height = 39
-      Margins.Left = 0
-      Margins.Top = 0
-      Margins.Right = 5
-      Margins.Bottom = 0
       Align = alLeft
       Caption = 'Editar [ F3 ]'
       TabOrder = 2
-      ExplicitLeft = 209
+      ExplicitLeft = 167
     end
     object btIncluir: TButton
-      AlignWithMargins = True
       Left = 1
       Top = 1
-      Width = 104
+      Width = 133
       Height = 39
-      Margins.Left = 0
-      Margins.Top = 0
-      Margins.Right = 5
-      Margins.Bottom = 0
       Align = alLeft
       Caption = 'Incluir [ F1 ]'
       TabOrder = 3

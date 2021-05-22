@@ -43,8 +43,6 @@ end;
 function TModelEntitiesCarro.Codigo(aValue: Integer): TModelEntitiesCarro;
 begin
   Result := Self;
-  if (aValue <= 0) then
-    raise Exception.Create('Codigo do carro não informado !');
   FCodigo := aValue;
 end;
 
@@ -84,8 +82,6 @@ end;
 function TModelEntitiesCarro.Modelo(aValue: string): TModelEntitiesCarro;
 begin
   Result := Self;
-  if (Trim(Modelo) = '') then
-    raise Exception.Create('Modelo do carro não informado !');
   FModelo := aValue;
 end;
 

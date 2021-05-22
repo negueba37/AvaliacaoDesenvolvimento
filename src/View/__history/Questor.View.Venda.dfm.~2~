@@ -1,5 +1,0 @@
-inherited FQuestorViewVenda: TFQuestorViewVenda
-  Caption = 'FQuestorViewVenda'
-  PixelsPerInch = 96
-  TextHeight = 13
-end

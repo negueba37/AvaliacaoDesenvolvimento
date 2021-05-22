@@ -7,7 +7,7 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Questor.View.Base, Data.DB,
   Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.Grids, Vcl.DBGrids,
   Questor.Model.DAO.Interfaces, Questor.Model.Entities.Venda,
-  Questor.Model.DAO.Venda, Questor.Model.Components.Helper.Edit, Vcl.ComCtrls;
+  Questor.Model.DAO.Venda, Questor.Model.Components.Helper.Edit;
 
 type
   TFQuestorViewVenda = class(TFQuestorViewBase)
@@ -17,14 +17,10 @@ type
     edPessoa: TEdit;
     edCarro: TEdit;
     Label1: TLabel;
-    edDtVenda: TDateTimePicker;
-    Label4: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure btIncluirClick(Sender: TObject);
     procedure dbgCadastroDblClick(Sender: TObject);
     procedure btDeletarClick(Sender: TObject);
-    procedure btEditarClick(Sender: TObject);
-    procedure FormShow(Sender: TObject);
   private
     FController : iModelDAOInterfaces<TModelEntitiesVenda>;
   public
@@ -45,18 +41,6 @@ begin
   .Codigo(edCodigo.ToInteger)
   .&End
   .Delete.Get;
-end;
-
-procedure TFQuestorViewVenda.btEditarClick(Sender: TObject);
-begin
-  inherited;
-  FController.This
-  .Codigo(edCodigo.ToInteger)
-  .CodigoCliente(edPessoa.ToInteger)
-  .CodigoCarro(edCarro.ToInteger)
-  .DataVenda(edDtVenda.Date)
-  .&End
-  .Update.Get;
 
 end;
 
@@ -67,7 +51,7 @@ begin
   .Codigo(edCodigo.ToInteger)
   .CodigoCliente(edPessoa.ToInteger)
   .CodigoCarro(edCarro.ToInteger)
-  .DataVenda(edDtVenda.Date)
+  .DataVenda(Date)
   .&End
   .Insert.Get;
 end;
@@ -88,12 +72,6 @@ begin
   inherited;
   FController := TModelDAOVenda.New;
   FController.DataSource(dsCadastro).Get;
-end;
-
-procedure TFQuestorViewVenda.FormShow(Sender: TObject);
-begin
-  inherited;
-  edDtVenda.Date := Date;
 end;
 
 end.

@@ -1,9 +1,8 @@
 inherited FQuestorViewCarro: TFQuestorViewCarro
-  Caption = 'Cadastro de Carro'
+  Caption = 'FQuestorViewCarro'
   ClientHeight = 321
   ClientWidth = 648
   OnCreate = FormCreate
-  OnShow = FormShow
   ExplicitWidth = 664
   ExplicitHeight = 360
   PixelsPerInch = 96
@@ -17,8 +16,9 @@ inherited FQuestorViewCarro: TFQuestorViewCarro
     Width = 648
     ExplicitWidth = 648
     inherited btListar: TButton
+      Left = 514
       OnClick = btListarClick
-      ExplicitLeft = 328
+      ExplicitLeft = 514
     end
     inherited btDeletar: TButton
       OnClick = btDeletarClick

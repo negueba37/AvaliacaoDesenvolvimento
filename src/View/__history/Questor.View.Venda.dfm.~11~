@@ -1,16 +1,12 @@
-inherited FQuestorViewCliente: TFQuestorViewCliente
-  Caption = 'Cadastro de Cliente'
+inherited FQuestorViewVenda: TFQuestorViewVenda
+  Caption = 'FQuestorViewVenda'
   OnCreate = FormCreate
-  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   inherited dbgCadastro: TDBGrid
     OnDblClick = dbgCadastroDblClick
   end
   inherited pnAcoes: TPanel
-    inherited btListar: TButton
-      OnClick = btListarClick
-    end
     inherited btDeletar: TButton
       OnClick = btDeletarClick
     end
@@ -32,9 +28,23 @@ inherited FQuestorViewCliente: TFQuestorViewCliente
     object Label2: TLabel
       Left = 72
       Top = 24
-      Width = 19
+      Width = 34
       Height = 13
-      Caption = 'CPF'
+      Caption = 'Pessoa'
+    end
+    object Label1: TLabel
+      Left = 216
+      Top = 24
+      Width = 27
+      Height = 13
+      Caption = 'Carro'
+    end
+    object Label4: TLabel
+      Left = 400
+      Top = 25
+      Width = 56
+      Height = 13
+      Caption = 'Data Venda'
     end
     object edCodigo: TEdit
       Left = 8
@@ -43,12 +53,28 @@ inherited FQuestorViewCliente: TFQuestorViewCliente
       Height = 21
       TabOrder = 0
     end
-    object edCpf: TEdit
+    object edPessoa: TEdit
       Left = 72
       Top = 44
       Width = 95
       Height = 21
       TabOrder = 1
+    end
+    object edCarro: TEdit
+      Left = 216
+      Top = 44
+      Width = 113
+      Height = 21
+      TabOrder = 2
+    end
+    object edDtVenda: TDateTimePicker
+      Left = 400
+      Top = 44
+      Width = 186
+      Height = 21
+      Date = 44338.000000000000000000
+      Time = 0.848086273144872400
+      TabOrder = 3
     end
   end
 end
