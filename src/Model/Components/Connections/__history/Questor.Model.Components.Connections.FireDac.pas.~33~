@@ -21,7 +21,6 @@ uses
   FireDAC.DatS,
   FireDAC.DApt.Intf,
   FireDAC.DApt,
-  Data.DB,
   FireDAC.Comp.DataSet,
   FireDAC.Comp.Client;
 
@@ -54,11 +53,11 @@ end;
 
 constructor TModelComponentsConnectionsFireDac.Create;
 begin
-  FConnection                 := TFDConnection.Create;
+  FConnection                 := TFDConnection.Create(nil);
   FConnection.Connected       := False;
   FConnection.Params.DriverID := 'FB';
   FConnection.LoginPrompt     := False;
-  FConnection.Params.Database := 'C:\Projetos\Questor\Banco\SORTEIO_TAIF.FDB';
+  FConnection.Params.Database := 'C:\\AvaliacaoDesenvolvimento\Banco\SORTEIO_TAIF.FDB';
   FConnection.Params.UserName := 'SYSDBA';
   FConnection.Params.Password := '@CNE2021';
   FConnection.Connected       := True;
@@ -74,8 +73,8 @@ end;
 
 destructor TModelComponentsConnectionsFireDac.Destroy;
 begin
-  FConnection.Free;
-  FQuery.Free;
+  FConnection.DisposeOf;
+  FQuery.DisposeOf;
   inherited;
 end;
 
@@ -113,6 +112,7 @@ end;
 function TModelComponentsConnectionsFireDac.SQLClear: iModelComponentsConnections;
 begin
   Result := Self;
+  FQuery.SQL.Clear;
 end;
 
 end.

@@ -1,5 +1,0 @@
-inherited FQuestorViewCarro: TFQuestorViewCarro
-  Caption = 'FQuestorViewCarro'
-  PixelsPerInch = 96
-  TextHeight = 13
-end

@@ -12,7 +12,6 @@ inherited FQuestorViewCarro: TFQuestorViewCarro
     Top = 112
     Width = 648
     Height = 209
-    OnDblClick = dbgCadastroDblClick
   end
   inherited pnAcoes: TPanel
     Width = 648
@@ -23,11 +22,9 @@ inherited FQuestorViewCarro: TFQuestorViewCarro
     end
     inherited btDeletar: TButton
       OnClick = btDeletarClick
-      ExplicitLeft = 110
     end
     inherited btEditar: TButton
       OnClick = btEditarClick
-      ExplicitLeft = 219
     end
     inherited btIncluir: TButton
       OnClick = btIncluirClick

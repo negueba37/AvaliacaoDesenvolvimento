@@ -23,6 +23,7 @@ type
     procedure btListarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure dbgCadastroDblClick(Sender: TObject);
   private
     FController:iModelDAOInterfaces<TModelEntitiesCarro>;
   public
@@ -77,6 +78,18 @@ procedure TFQuestorViewCarro.btListarClick(Sender: TObject);
 begin
   inherited;
   FController.Get;
+end;
+
+procedure TFQuestorViewCarro.dbgCadastroDblClick(Sender: TObject);
+begin
+  inherited;
+  if (dsCadastro.DataSet.RecordCount > 0) then
+  begin
+    edCodigo.Text       := dsCadastro.DataSet.FieldByName('CODIGO').AsString;
+    edModelo.Text       := dsCadastro.DataSet.FieldByName('MODELO').AsString;
+    edDtLancamento.Date := dsCadastro.DataSet.FieldByName('DATALANCAMENTO').AsDateTime;
+  end;
+
 end;
 
 procedure TFQuestorViewCarro.FormCreate(Sender: TObject);
